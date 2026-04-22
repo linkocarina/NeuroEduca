@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NeuroEduca - Bridging Science and Digital Consumption</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#006d3e",
+                        "secondary": "#575e70",
+                        "secondary-fixed": "#dce2f7",
+                        "inverse-primary": "#73db9a",
+                        "secondary-container": "#d9dff5",
+                        "on-background": "#121c28",
+                        "on-tertiary-fixed-variant": "#3e4943",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#f8f9ff",
+                        "on-surface-variant": "#3e4a40",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "on-primary-fixed": "#00210f",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#bdcabe",
+                        "surface-container-low": "#eef4ff",
+                        "outline": "#6e7a70",
+                        "tertiary-fixed-dim": "#bdcac1",
+                        "on-secondary-container": "#5c6274",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#404758",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#d1dbec",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#131e19",
+                        "surface-container-high": "#dfe9fa",
+                        "on-tertiary-container": "#56625b",
+                        "primary-fixed-dim": "#73db9a",
+                        "surface-tint": "#006d3e",
+                        "on-primary-fixed-variant": "#00522d",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#141b2b",
+                        "surface-container": "#e5eeff",
+                        "surface": "#f8f9ff",
+                        "surface-container-highest": "#d9e3f4",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#8ff8b4",
+                        "primary-container": "#86efac",
+                        "tertiary-fixed": "#d9e6dd",
+                        "primary": "#006d3e",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-surface": "#121c28",
+                        "background": "#f8f9ff",
+                        "inverse-surface": "#27313e",
+                        "surface-variant": "#d9e3f4",
+                        "tertiary-container": "#d0ddd4",
+                        "tertiary": "#55615a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "article-width": "720px",
+                        "margin-page": "auto",
+                        "unit": "8px",
+                        "max-width": "1200px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "display-xl": ["Manrope"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.8", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-xl": ["48px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                        "label-sm": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, minmax(200px, auto));
+            gap: 24px;
+        }
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
+<nav class="flex justify-between items-center h-16 px-6 lg:px-12 max-w-[1200px] mx-auto w-full font-manrope antialiased tracking-tight">
+<div class="flex items-center gap-8">
+<a class="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white" href="#">NeuroEduca</a>
+<div id="header" class="hidden md:flex gap-6">
+<a class="text-slate-500 dark:text-white hover:text-[#86EFAC] transition-colors duration-200 hover:border-b-2 hover:border-[#86EFAC]" href="#" id="inicio">Início</a>
+<a class="text-slate-500 dark:text-white hover:text-[#86EFAC] transition-colors duration-200 hover:border-b-2 hover:border-[#86EFAC]" href="#article" id="artigo">Artigos</a>
+<a class="text-slate-500 dark:text-white hover:text-[#86EFAC] transition-colors duration-200 hover:border-b-2 hover:border-[#86EFAC]" href="#curiosidades">Curiosidades</a>
+<a class="text-slate-500 dark:text-white hover:text-[#86EFAC] transition-colors duration-200 hover:border-b-2 hover:border-[#86EFAC]" href="#news" id="novidade">Novidades</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer active:opacity-70">search</span>
+<span id="menu-open" class="material-symbols-outlined text-slate-500 cursor-pointer active:opacity-70 md:hidden">menu</span>
+</div>
+<div id="menu-overlay" class="fixed inset-0 bg-black/50 z-[50] hidden opacity-0 transition-opacity duration-300"></div>
+<div id="menu-mobile" class="fixed top-0 left-0 h-full w-64 bg-white z-[100] flex flex-col gap-4 p-6 transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <span id="menu-close" class="material-symbols-outlined text-slate-500 cursor-pointer active:opacity-70 md:hidden">menu</span>
+    <a href="#inicio" class="text-xl text-slate-500 dark:text-white hover:text-[#86EFAC] transition-colors duration-200 hover:border-b-2 hover:border-[#86EFAC]">Início</a>
+    <a href="#article" class="text-xl text-slate-500 dark:text-white hover:text-[#86EFAC] transition-colors duration-200 hover:border-b-2 hover:border-[#86EFAC]">Artigos</a>
+    <a href="#news" class="text-xl text-slate-500 dark:text-white hover:text-[#86EFAC] transition-colors duration-200 hover:border-b-2 hover:border-[#86EFAC]">Novidades</a>
+    <a href="#curiosidades" class="text-xl text-slate-500 dark:text-white hover:text-[#86EFAC] transition-colors duration-200 hover:border-b-2 hover:border-[#86EFAC]">Curiosidades</a>
+</div>
+</nav>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section  class="relative py-24 px-6 lg:px-12 bg-surface overflow-hidden">
+<div class="max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-12 items-center">
+<div class="z-10">
+<span class="inline-block px-4 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm mb-6">NEUROCIÊNCIA &amp; TECNOLOGIA</span>
+<h1 class="font-display-xl text-display-xl text-on-background mb-6">Qual nosso intuíto?</h1>
+<p class="font-body-lg text-body-lg text-secondary mb-8 max-w-lg">O intuito da nossa equipe é levar informação clara, confiável e baseada em ciência sobre como as drogas afetam o cérebro e o comportamento humano. Buscamos desmistificar conceitos, combater a desinformação e ajudar as pessoas a compreenderem melhor os riscos, efeitos e implicações dessas substâncias.</p>
+<div class="flex gap-4">
+<a href="page2.html" class="items-center px-8 py-4 bg-primary-container text-on-primary-container font-label-sm rounded-lg hover:opacity-90 transition-opacity">Veja mais 
+    <span class="material-symbols-outlined">arrow_forward</span></a>
+<a class="items-center px-8 py-4 border border-primary-container text-primary font-label-sm rounded-lg hover:bg-primary-container/10 transition-colors flex items-center gap-2" href="#article">
+                            Ultimos Artigos <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-12 -left-12 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-12 -right-12 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<img alt="Abstract brain visualization" class="relative rounded-2xl shadow-2xl z-10 w-full h-[500px] object-cover" data-alt="Intricate 3D render of a human brain with glowing neural pathways and data nodes in soft mint and blue tones on a clean white background" src="images/NeuroEduca (3).png"/>
+</div>
+</div>
+</section>
+<!-- Featured Articles Section -->
+<section id="article" class="py-24 px-6 lg:px-12 bg-white">
+<div class="max-w-[1200px] mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-2">Artigos Relevantes</h2>
+<p class="text-secondary font-body-md">Veja nossos artigos mais relevantes e que despertam curiosidade!</p>
+</div>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Article Card 1 -->
+<article class="group bg-white rounded-xl border border-slate-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+<img alt="Neural network" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Microscopic view of neural connections and synapses glowing with electric blue and green light in a dark ethereal space" src="images/pexels-mart-production-7230391.jpg"/>
+<div class="p-6">
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-[12px] font-bold">DROGAS E SEUS EFEITOS</span>
+</div>
+<a href="">
+    <h3 class="font-headline-md text-headline-md mb-3 group-hover:text-primary transition-colors">Como as drogas agem no cérebro e por que viciam?</h3>
+</a>
+<p class="text-secondary text-body-md mb-6 line-clamp-2 hover:line-clamp-none ">Hoje em dia nós negligenciamos os efeitos colaterais das drogas, e isso tem uma grave consequencia. Veja mais nesse post!</p>
+<div class="flex items-center justify-between">
+<a href="https://www.einstein.br/n/vida-saudavel/como-as-drogas-agem-no-cerebro-e-por-que-viciam-entenda-seus-efeitos"><span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_right_alt</span></a>
+</div>
+</div>
+</article>
+<!-- Article Card 2 -->
+<article class="group bg-white rounded-xl border border-slate-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+<img alt="Laboratory beaker" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern scientific laboratory with specialized glassware and equipment in a clean, brightly lit sterile environment with mint green accents" src="images/pexels-shvetsa-4226119.jpg"/>
+<div class="p-6">
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-[12px] font-bold">SURGIMENTO DA NEUROCIÊNCIA</span>
+</div>
+<a href="https://parajovens.unesp.br/a-incrivel-historia-da-neurociencia/">
+    <h3 class="font-headline-md text-headline-md mb-3 group-hover:text-primary transition-colors">Qual o proposito da neurociência e pra que ela surgiu?</h3>
+</a>
+<p class="text-secondary text-body-md mb-6 line-clamp-2 hover:line-clamp-none ">A neurociência nasceu com um propósito claro. Levar informação científica, acessível e responsavel sobre os impactos das drogas sintéticas no cérebro. Veja mais sobre nesse artigo da Unesp.</p>
+<div class="flex items-center justify-between">
+<a href="https://parajovens.unesp.br/a-incrivel-historia-da-neurociencia/"><span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_right_alt</span></a>
+</div>
+</div>
+</article>
+<!-- Article Card 3 -->
+<article class="group bg-white rounded-xl border border-slate-100 overflow-hidden hover:shadow-xl transition-shadow duration-300">
+<img alt="Person studying" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Focused researcher studying complex brain maps on a high-resolution display in a dimly lit office with soft task lighting" src="images/pexels-beatriz-fernandes-3765504-13572006.jpg"/>
+<div class="p-6">
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-[12px] font-bold">UTILIZANDO NEUROCIÊNCIA</span>
+</div>
+<a href="http://cienciaecultura.bvs.br/scielo.php?script=sci_arttext&pid=S0009-67252022000400004">
+    <h3 class="font-headline-md text-headline-md mb-3 group-hover:text-primary transition-colors">Como podemos utilizar neurociência no dia a dia?</h3>
+</a>
+<p class="text-secondary text-body-md mb-6 line-clamp-2 hover:line-clamp-none ">Podemos utilizar a neurociência, para podermos ter mais conhecimento de nós mesmos e também sabermos como nosso cérebro funciona. Veja mais nesse artigo científico da Ciência e Cultura.</p>
+<div class="flex items-center justify-between">
+<a href="http://cienciaecultura.bvs.br/scielo.php?script=sci_arttext&pid=S0009-67252022000400004"><span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_right_alt</span></a>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Brain Curiosities (Asymmetric Layout) -->
+<section id="curiosidades" class="py-24 px-6 lg:px-12 bg-surface-container-low">
+<div class="max-w-[1200px] mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-12 text-center">Curiosidades</h2>
+<div class="bento-grid">
+<div class="md:col-span-2 bg-white p-8 rounded-xl border border-slate-100 flex flex-col justify-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-4" data-weight="fill">lightbulb</span>
+<h4 class="font-headline-md text-headline-md mb-4">The 20% Rule</h4>
+<p class="text-secondary font-body-md">Despite accounting for only 2% of total body weight, the human brain consumes approximately 20% of the body's total energy and oxygen.</p>
+</div>
+<div class="md:col-span-2 bg-primary-container p-8 rounded-xl border border-primary/10 flex items-center gap-6">
+<div class="flex-1">
+<h4 class="font-headline-md text-on-primary-container mb-2 text-2xl">Processing Speed</h4>
+<p class="text-on-primary-container font-body-md">Information travels along different types of neurons at different speeds, ranging from 1 to 268 miles per hour.</p>
+</div>
+<span class="material-symbols-outlined text-6xl text-on-primary-container opacity-20">speed</span>
+</div>
+<div class="md:col-span-1 bg-white p-6 rounded-xl border border-slate-100">
+<h4 class="font-label-sm text-primary mb-2">MEMORY</h4>
+<p class="text-secondary font-body-md">The storage capacity of the human brain is estimated to be around 2.5 petabytes—equivalent to 3 million hours of video.</p>
+</div>
+<div class="md:col-span-1 bg-white p-6 rounded-xl border border-slate-100">
+<h4 class="font-label-sm text-primary mb-2">SLEEP</h4>
+<p class="text-secondary font-body-md">Your brain is more active during sleep than while you're watching television.</p>
+</div>
+<div class="md:col-span-2 bg-inverse-surface p-8 rounded-xl flex items-center">
+<div class="text-inverse-on-surface">
+<h4 class="font-headline-md mb-2">Pain Perception</h4>
+<p class="opacity-80">The brain itself cannot feel pain; it has no pain receptors, even though it interprets pain signals from the rest of the body.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Latest News Section -->
+<section id="news" class="py-24 px-6 lg:px-12 bg-white">
+<div class="max-w-[1200px] mx-auto">
+<div class="flex items-center gap-4 mb-12">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Latest News</h2>
+<div class="h-px bg-slate-100 flex-1"></div>
+</div>
+<div class="space-y-6">
+<div class="group flex flex-col md:flex-row gap-8 items-center p-4 rounded-xl hover:bg-slate-50 transition-colors">
+<div class="text-center md:text-left min-w-[100px]">
+<span class="block font-bold text-2xl text-primary">OCT 24</span>
+<span class="text-label-sm text-slate-400">2024</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Breakthrough in Neural Link Interface Stability</h4>
+<p class="text-secondary font-body-md mt-1">International research team successfully stabilizes signal noise in long-term BCI implants.</p>
+</div>
+<button class="material-symbols-outlined text-slate-300 group-hover:text-primary">open_in_new</button>
+</div>
+<div class="group flex flex-col md:flex-row gap-8 items-center p-4 rounded-xl hover:bg-slate-50 transition-colors">
+<div class="text-center md:text-left min-w-[100px]">
+<span class="block font-bold text-2xl text-primary">OCT 21</span>
+<span class="text-label-sm text-slate-400">2024</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">NeuroEduca Annual Symposium Dates Announced</h4>
+<p class="text-secondary font-body-md mt-1">Join us in Zurich for three days of intensive research sharing and collaborative workshops.</p>
+</div>
+<button class="material-symbols-outlined text-slate-300 group-hover:text-primary">open_in_new</button>
+</div>
+<div class="group flex flex-col md:flex-row gap-8 items-center p-4 rounded-xl hover:bg-slate-50 transition-colors">
+<div class="text-center md:text-left min-w-[100px]">
+<span class="block font-bold text-2xl text-primary">OCT 18</span>
+<span class="text-label-sm text-slate-400">2024</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">Metabolic Pathways of Short-Term Memory Decoded</h4>
+<p class="text-secondary font-body-md mt-1">New imaging techniques reveal the exact chemical sequence for temporal memory storage.</p>
+</div>
+<button class="material-symbols-outlined text-slate-300 group-hover:text-primary">open_in_new</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center py-12 px-6 max-w-[1200px] mx-auto font-manrope text-sm">
+<div class="mb-8 md:mb-0">
+<span class="font-bold text-slate-800 dark:text-slate-100 text-xl block mb-2">NeuroEduca</span>
+<p class="text-slate-500 dark:text-slate-400 max-w-xs">© 2026 NeuroEduca. Todos os direitos reservados.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#86EFAC] underline-offset-4 hover:underline transition-all duration-300" href="https://www.instagram.com/neuro_educa_/">Perfil do Instagram</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#86EFAC] underline-offset-4 hover:underline transition-all duration-300" href="#">Metodologia</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-[#86EFAC] underline-offset-4 hover:underline transition-all duration-300" href="#">Contato</a>
+</div>
+</div>
+</footer>
+<script src="js/menu.js"></script>
+</body></html>
